@@ -97,11 +97,11 @@ app.put('/usuarios/:id', async(req, res) => {
     try {
         const { id } = req.params;
         const { nome, sobrenome, dataNascimento, email, sexo } = req.body;
-        const datadenascimento = new Date(datadenascimento);
+        const datadenascimento = new Date(dataNascimento);
         const idade = calculadorIdade(datadenascimento);
-        const signo = mostrarSigno(dataNascimento.getMonth() + 1, dataNascimento.getDate());
+        const signo = mostrarSigno(datadenascimento.getMonth() + 1, datadenascimento.getDate());
 
-        await pool.query('UPDATE usuarios SET nome = $1, sobrenome = $2, dataNascimento = $3, email = $4, idade = $5, signo = $5, sexo = $6 WHERE id = $7', [nome, sobrenome, dataNascimento, email, idade, signo, sexo, id]);
+        await pool.query('UPDATE usuarios SET nome = $1, sobrenome = $2, dataNascimento = $3, email = $4, idade = $5, signo = $6, sexo = $7 WHERE id = $8', [nome, sobrenome, dataNascimento, email, idade, signo, sexo, id]);
         res.status(200).send({mensagem: 'Usuario editado com sucesso'})
     } catch (error) {
         console.error('Erro ao editar o usuario', error);
