@@ -1,3 +1,5 @@
+CREATE DATABASE lucas;
+
 \c lucas;
 
 CREATE TABLE usuarios (
@@ -8,6 +10,5 @@ CREATE TABLE usuarios (
     email VARCHAR(100) NOT NULL,
     idade INTEGER NOT NULL,
     signo VARCHAR(20) NOT NULL,
-    status VARCHAR(20) NOT NULL,
     sexo VARCHAR(20) NOT NULL
 );
